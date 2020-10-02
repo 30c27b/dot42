@@ -2,46 +2,37 @@ package pref
 
 import (
 	"fmt"
+	"log"
 	"os/exec"
 )
 
-// DataType is the data type of a Pref key
-type DataType int
-
-// List of DataTypes
-const (
-	String DataType = iota
-	Data
-	Int
-	float
-	Bool
-	Date
-	Array
-	ArrayAdd
-	Dict
-	DictAdd
-)
-
-// Pref prepresents a macos key for the defaults command
+// Pref prepresents a defaults key
 type Pref struct {
-	Domain    string
-	Key       string
-	ValueType DataType
-	Value     interface{}
+	Domain   string
+	Key      string
+	ValueRep string
+	Value    string
 }
 
 // New creates a new Pref object
-func New(domain string, key string, valueType DataType, value interface{}) Pref {
-	return Pref{domain, key, valueType, value}
+func New(domain string, key string, valueRep string, value string) Pref {
+	return Pref{domain, key, valueRep, value}
 }
 
-// Read reads the value of the Pref key on the host computer
-func (p Pref) Read() {
+// Read reads current the value of the Pref key on the host computer
+func (p Pref) Read() string {
 	out, err := exec.Command("defaults", "read", p.Domain, p.Key).Output()
 	if err != nil {
-		fmt.Println("error:", err)
-	} else {
-		output := string(out[:])
-		fmt.Println(output)
+		log.Fatal("error: Invalid command:")
 	}
+	return string(out[:])
+}
+
+// Write executes the given Pref
+func (p Pref) Write() {
+	out, err := exec.Command("defaults", "write", p.Domain, p.Key, "-"+p.ValueRep, p.Value).Output()
+	if err != nil {
+		log.Fatal("error: Invalid command:", err)
+	}
+	fmt.Println(string(out[:]))
 }

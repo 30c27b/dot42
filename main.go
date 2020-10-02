@@ -16,6 +16,8 @@ func main() {
 
 	configPath := flag.String("configPath", "config/config.json", "config file path")
 	config.Process(*configPath)
-	p := pref.New("Apple Global Domain", "AppleInterfaceStyle", pref.String, "Dark")
-	p.Read()
+
+	p := pref.New("Apple Global Domain", "AppleInterfaceStyle", "string", "Dark")
+	v := p.Read()
+	fmt.Println(v)
 }

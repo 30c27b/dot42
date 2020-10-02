@@ -3,6 +3,7 @@ BIN			= dot42
 GOCMD		= go
 GOBUILD		= $(GOCMD) build
 GOCLEAN		= $(GOCMD) clean
+GOINST		= $(GOCMD) install
 
 all:		build
 
