@@ -1,0 +1,14 @@
+# default sources
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+
+# valgrind source
+tap "louisbrunner/valgrind"
+
+## programs
+brew "go"
+brew "magic-wormhole"
+brew "neofetch"
+brew "louisbrunner/valgrind/valgrind", args: ["HEAD"]
+cask "visual-studio-code"

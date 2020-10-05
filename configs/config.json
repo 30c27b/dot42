@@ -1,6 +1,6 @@
 {
-	"brewPath": "Desktop",
-	"brewCaskPath": "Desktop/Applications",
-	"brewName": "Homebrew",
+	"brewPath": "Desktop/testing",
+	"brewCaskPath": "Desktop/Apps",
+	"brewName": "brew",
 	"brewRepository": "https://github.com/Homebrew/brew.git"
 }

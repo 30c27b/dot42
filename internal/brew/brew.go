@@ -1,6 +1,7 @@
 package brew
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -8,23 +9,28 @@ import (
 	"strings"
 
 	"github.com/30c27b/dot42/internal/config"
+	"github.com/30c27b/dot42/internal/utils"
 )
 
 type brewCtx struct {
 	homeDir      string
 	fullPath     string
 	repoFullPath string
+	caskPath     string
 	brewExec     string
 }
 
 // Install checks if brew is installed and installs it if it is not the case
 func Install() {
 	ctx := newBrewCtx()
-	if isLocallyInstalled(ctx) {
-		log.Fatal("error: brew is already installed in your home directory; please uninstall it or remove it from the path")
+	if localBrewIsOnPath(ctx) {
+		fmt.Println("warning: brew is already installed in your home directory, you may want to update your path to ignore it.")
 	}
 	createDir(ctx)
-
+	if !utils.IsEmpty(ctx.repoFullPath) {
+		log.Fatal("the directory", ctx.repoFullPath, "should be empty.")
+	}
+	localInstall(ctx)
 }
 
 func newBrewCtx() *brewCtx {
@@ -34,11 +40,12 @@ func newBrewCtx() *brewCtx {
 	}
 	fullPath := path.Join(homeDir, config.Cfg.BrewPath)
 	repoFullPath := path.Join(fullPath, config.Cfg.BrewRepository)
+	caskPath := path.Join(homeDir, config.Cfg.BrewCaskPath)
 	brewExec := path.Join(fullPath, "/bin/brew")
-	return &brewCtx{homeDir, fullPath, repoFullPath, brewExec}
+	return &brewCtx{homeDir, fullPath, repoFullPath, caskPath, brewExec}
 }
 
-func isLocallyInstalled(ctx *brewCtx) bool {
+func localBrewIsOnPath(ctx *brewCtx) bool {
 	p, err := exec.LookPath("brew")
 	if err != nil {
 		return false
@@ -50,11 +57,17 @@ func isLocallyInstalled(ctx *brewCtx) bool {
 }
 
 func createDir(ctx *brewCtx) {
-	if err := os.MkdirAll(ctx.repoFullPath, 744); err != nil {
+	if err := os.MkdirAll(ctx.repoFullPath, 0755); err != nil {
 		log.Fatal("error: the directory", ctx.repoFullPath, "could not be created.")
 	}
-	if err := os.Mkdir(path.Join(ctx.fullPath, "bin"), 744); err != nil {
-		log.Fatal("error: the directory", ctx.fullPath+"/bin", "could not be created.")
+	if err := os.Mkdir(path.Join(ctx.fullPath, "bin"), 0755); err != nil {
+		log.Fatal("error: the directory", ctx.fullPath+"/bin", " could not be created.")
+	}
+	if err := os.Mkdir(ctx.repoFullPath, 0755); err != nil {
+		log.Fatal("error: the directory", ctx.repoFullPath, " could not be created.")
+	}
+	if err := os.Mkdir(ctx.caskPath, 744); err != nil {
+		log.Fatal("error: the directory", ctx.caskPath, "could not be created.")
 	}
 }
 

@@ -3,9 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"runtime"
 
-	"github.com/30c27b/dot42/internal/brew"
+	"github.com/30c27b/dot42/cmd/setup"
 	"github.com/30c27b/dot42/internal/config"
 )
 
@@ -15,7 +16,19 @@ func main() {
 	}
 
 	configPath := flag.String("configPath", "configs/config.json", "config file path")
+
+	flag.Parse()
+
 	config.Process(*configPath)
 
-	brew.Install()
+	if len(os.Args) == 1 {
+		os.Exit(1)
+	}
+
+	switch os.Args[1] {
+	case "setup":
+		setup.Run()
+	default:
+		os.Exit(1)
+	}
 }
