@@ -3,5 +3,32 @@
 	"brewCaskPath": "Desktop/Apps",
 	"brewName": "brew",
 	"brewRepository": "https://github.com/Homebrew/brew.git",
-	"zshrcPath": "Desktop/zshrc.txt"
+	"zshrcPath": "Desktop/zshrc.txt",
+	"darkTheme": true,
+	"defaults": [
+		{
+			"domain": "Apple Global Domain",
+			"key": "com.apple.swipescrolldirection",
+			"valueType": "bool",
+			"value": "false"
+		},
+		{
+			"domain": "Apple Global Domain",
+			"key": "AppleAccentColor",
+			"valueType": "int",
+			"value": "1"
+		},
+		{
+			"domain": "Apple Global Domain",
+			"key": "AppleShowAllExtensions",
+			"valueType": "bool",
+			"value": "true"
+		},
+		{
+			"domain": "Apple Global Domain",
+			"key": "AppleInterfaceStyle",
+			"valueType": "string",
+			"value": "Dark"
+		}
+	]
 }

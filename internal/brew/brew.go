@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/30c27b/dot42/internal/config"
+	"github.com/30c27b/dot42/internal/utils"
 )
 
 type brewCtx struct {
@@ -26,11 +27,11 @@ func Install() {
 	if localBrewIsOnPath(ctx) {
 		fmt.Println("warning: brew is already installed in your home directory, you may want to update your path to ignore it.")
 	}
-	//createDir(ctx)
-	// if !utils.IsEmpty(ctx.repoFullPath) {
-	// 	log.Fatal("the directory", ctx.repoFullPath, "should be empty.")
-	// }
-	//localInstall(ctx)
+	createDir(ctx)
+	if !utils.IsEmpty(ctx.repoFullPath) {
+		log.Fatal("the directory", ctx.repoFullPath, "should be empty.")
+	}
+	localInstall(ctx)
 	addToPath(ctx)
 }
 
@@ -60,16 +61,16 @@ func localBrewIsOnPath(ctx *brewCtx) bool {
 
 func createDir(ctx *brewCtx) {
 	if err := os.MkdirAll(ctx.repoFullPath, 0755); err != nil {
-		log.Fatal("error: the directory", ctx.repoFullPath, "could not be created.")
+		log.Fatal("error: the directory ", ctx.repoFullPath, " could not be created.")
 	}
 	if err := os.MkdirAll(path.Join(ctx.fullPath, "bin"), 0755); err != nil {
-		log.Fatal("error: the directory", ctx.fullPath+"/bin", " could not be created.")
+		log.Fatal("error: the directory ", ctx.fullPath+"/bin", " could not be created.")
 	}
 	if err := os.MkdirAll(ctx.repoFullPath, 0755); err != nil {
-		log.Fatal("error: the directory", ctx.repoFullPath, " could not be created.")
+		log.Fatal("error: the directory ", ctx.repoFullPath, " could not be created.")
 	}
 	if err := os.MkdirAll(ctx.caskPath, 0755); err != nil {
-		log.Fatal("error: the directory", ctx.caskPath, "could not be created.")
+		log.Fatal("error: the directory ", ctx.caskPath, "could not be created.")
 	}
 }
 

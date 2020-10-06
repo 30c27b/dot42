@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/30c27b/dot42/internal/pref"
 )
 
 // Cfg stores information about the config file
@@ -17,6 +19,8 @@ type Config struct {
 	BrewCaskPath   string
 	BrewRepository string
 	ZshrcPath      string
+	DarkTheme      bool
+	Defaults       []pref.Pref
 }
 
 // Process transforms a config file into a Config object

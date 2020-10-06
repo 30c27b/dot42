@@ -6,17 +6,11 @@ import (
 	"os/exec"
 )
 
-// Pref prepresents a defaults key
 type Pref struct {
-	Domain   string
-	Key      string
-	ValueRep string
-	Value    string
-}
-
-// New creates a new Pref object
-func New(domain string, key string, valueRep string, value string) Pref {
-	return Pref{domain, key, valueRep, value}
+	Domain    string
+	Key       string
+	ValueType string
+	Value     string
 }
 
 // Read reads current the value of the Pref key on the host computer
@@ -30,7 +24,7 @@ func (p Pref) Read() string {
 
 // Write executes the given Pref
 func (p Pref) Write() {
-	out, err := exec.Command("defaults", "write", p.Domain, p.Key, "-"+p.ValueRep, p.Value).Output()
+	out, err := exec.Command("defaults", "write", p.Domain, p.Key, "-"+p.ValueType, p.Value).Output()
 	if err != nil {
 		log.Fatal("error: Invalid command:", err)
 	}
