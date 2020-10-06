@@ -16,6 +16,7 @@ type Config struct {
 	BrewPath       string
 	BrewCaskPath   string
 	BrewRepository string
+	ZshrcPath      string
 }
 
 // Process transforms a config file into a Config object

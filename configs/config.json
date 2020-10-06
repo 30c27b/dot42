@@ -2,5 +2,6 @@
 	"brewPath": "Desktop/testing",
 	"brewCaskPath": "Desktop/Apps",
 	"brewName": "brew",
-	"brewRepository": "https://github.com/Homebrew/brew.git"
+	"brewRepository": "https://github.com/Homebrew/brew.git",
+	"zshrcPath": "Desktop/zshrc.txt"
 }
