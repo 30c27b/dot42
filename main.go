@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"log"
 	"os"
 	"runtime"
 
@@ -14,10 +14,10 @@ import (
 
 func main() {
 	if runtime.GOOS != "darwin" {
-		fmt.Println("this tool only works on macOS darwin")
+		log.Fatal("error: this tool only works on macOS darwin")
 	}
 
-	configPath := flag.String("configPath", "configs/config.json", "config file path")
+	configPath := flag.String("c", "configs/config.json", "/config.json file path")
 
 	flag.Parse()
 

@@ -1,9 +1,9 @@
 {
-	"brewPath": "Desktop/testing",
-	"brewCaskPath": "Desktop/Apps",
-	"brewName": "brew",
+	"brewPath": "usr",
+	"brewCaskPath": "Applications",
+	"brewName": "Homebrew",
 	"brewRepository": "https://github.com/Homebrew/brew.git",
-	"zshrcPath": "Desktop/zshrc.txt",
+	"zshrcPath": ".zshrc",
 	"darkTheme": true,
 	"defaults": [
 		{

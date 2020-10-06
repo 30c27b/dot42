@@ -13,10 +13,9 @@ func Run() {
 		setDarkTheme()
 	}
 	for _, pref := range config.Cfg.Defaults {
-		fmt.Printf("%s -> %s: (%s) %s", pref.Domain, pref.Key, pref.ValueType, pref.Value)
 		pref.Write()
 	}
-	fmt.Println("Done.")
+	fmt.Println("configuration loaded.")
 }
 
 func setDarkTheme() {

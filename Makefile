@@ -1,4 +1,5 @@
 BIN			= dot42
+BINDIR		= bin
 
 GOCMD		= go
 GOBUILD		= $(GOCMD) build
@@ -8,7 +9,7 @@ GOINST		= $(GOCMD) install
 all:		build
 
 build:
-			$(GOBUILD) -o $(BIN) -v
+			$(GOBUILD) -o $(BINDIR)/$(BIN) -v
 
 clean:
 			$(GOCLEAN)
