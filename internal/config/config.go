@@ -19,6 +19,7 @@ type Config struct {
 	BrewCaskPath   string
 	BrewRepository string
 	ZshrcPath      string
+	Brewfile       string
 	DarkTheme      bool
 	Defaults       []pref.Pref
 }

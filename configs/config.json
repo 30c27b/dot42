@@ -4,6 +4,7 @@
 	"brewName": "Homebrew",
 	"brewRepository": "https://github.com/Homebrew/brew.git",
 	"zshrcPath": ".zshrc",
+	"brewfile": "~/.42/configs/Brewfile",
 	"darkTheme": true,
 	"defaults": [
 		{
@@ -17,18 +18,6 @@
 			"key": "AppleAccentColor",
 			"valueType": "int",
 			"value": "1"
-		},
-		{
-			"domain": "Apple Global Domain",
-			"key": "AppleShowAllExtensions",
-			"valueType": "bool",
-			"value": "true"
-		},
-		{
-			"domain": "Apple Global Domain",
-			"key": "AppleInterfaceStyle",
-			"valueType": "string",
-			"value": "Dark"
 		}
 	]
 }

@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"os"
+	"path"
 	"runtime"
 
 	"github.com/30c27b/dot42/cmd/load"
@@ -17,7 +18,12 @@ func main() {
 		log.Fatal("error: this tool only works on macOS darwin")
 	}
 
-	configPath := flag.String("c", "configs/config.json", "/config.json file path")
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatal("error: cannot query home directory")
+	}
+
+	configPath := flag.String("c", path.Join(homeDir, ".42/configs/config.json"), "/config.json file path")
 
 	flag.Parse()
 

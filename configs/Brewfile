@@ -1,16 +1,11 @@
-# default sources
+# sources
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "louisbrunner/valgrind" # valgrind
 
-# valgrind source
-tap "louisbrunner/valgrind"
-
-## formulae
-brew "coreutils"
-brew "magic-wormhole"
-brew "neofetch"
+# valgrind: detect leaks (Mojave-comptatible version)
 brew "louisbrunner/valgrind/valgrind", args: ["HEAD"]
 
-## casks
-cask "visual-studio-code"
+# wormhole: send files and directories to other computers easily
+brew "magic-wormhole"

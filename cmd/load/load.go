@@ -15,7 +15,7 @@ func Run() {
 	for _, pref := range config.Cfg.Defaults {
 		pref.Write()
 	}
-	fmt.Println("configuration loaded.")
+	fmt.Println("Configuration loaded.")
 }
 
 func setDarkTheme() {

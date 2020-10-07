@@ -17,7 +17,7 @@ type Pref struct {
 func (p Pref) Read() string {
 	out, err := exec.Command("defaults", "read", p.Domain, p.Key).Output()
 	if err != nil {
-		log.Fatal("error: Invalid command:")
+		log.Fatal("error: Invalid defaults command: ", err)
 	}
 	return string(out[:])
 }
@@ -26,7 +26,7 @@ func (p Pref) Read() string {
 func (p Pref) Write() {
 	out, err := exec.Command("defaults", "write", p.Domain, p.Key, "-"+p.ValueType, p.Value).Output()
 	if err != nil {
-		log.Fatal("error: Invalid command:", err)
+		log.Fatal("error: Invalid defaults command: ", err)
 	}
 	fmt.Println(string(out[:]))
 }

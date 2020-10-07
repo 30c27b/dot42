@@ -18,10 +18,6 @@
 
 		<true/>
 
-		<key>WorkingDirectory</key>
-
-		<string>/Users/HOMEDIR/.42</string>
-
 		<key>StandardErrorPath</key>
 
 		<string>/Users/HOMEDIR/.42/log/daemon.err</string>
