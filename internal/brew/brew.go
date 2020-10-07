@@ -33,6 +33,7 @@ func Install() {
 	}
 	localInstall(ctx)
 	addToPath(ctx)
+	brewFileInstall()
 }
 
 func newBrewCtx() *brewCtx {
@@ -99,8 +100,8 @@ func addToPath(ctx *brewCtx) {
 	}
 }
 
-func brewFileInstall(ctx *brewCtx) {
-	if _, err := exec.Command("brew", "bundle", "--file", ).Output(); err != nil {
+func brewFileInstall() {
+	if _, err := exec.Command("brew", "bundle", "--file", config.Cfg.Brewfile).Output(); err != nil {
 		log.Fatal("error: brew not bundle the Brewfile: ", err)
 	}
 }
