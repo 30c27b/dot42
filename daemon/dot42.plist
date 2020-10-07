@@ -12,23 +12,19 @@
 
 		<key>Program</key>
 
-		<string>/users/ancoulon/.42/scripts/login.sh</string>
+		<string>/users/HOMEDIR/.42/scripts/login.sh</string>
 
 		<key>RunAtLoad</key>
 
 		<true/>
 
-		<key>WorkingDirectory</key>
-
-		<string>/users/ancoulon/.42</string>
-
 		<key>StandardErrorPath</key>
 
-		<string>/users/ancoulon/.42/log/daemon.err</string>
+		<string>/Users/HOMEDIR/.42/log/daemon.err</string>
 
 		<key>StandardOutPath</key>
 
-		<string>/users/ancoulon/.42/log/daemon.out</string>
+		<string>/Users/HOMEDIR/.42/log/daemon.log</string>
 
 	</dict>
 
