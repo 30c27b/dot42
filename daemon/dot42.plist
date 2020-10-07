@@ -12,11 +12,17 @@
 
 		<key>Program</key>
 
-		<string>/users/HOMEDIR/.42/scripts/login.sh</string>
+		<string>/Users/HOMEDIR/.42/scripts/login.sh</string>
 
 		<key>RunAtLoad</key>
 
 		<true/>
+
+		<key>WorkingDirectory</key>
+
+		<string>/Users/HOMEDIR/.42</string>
+
+		<string>/Users/HOMEDIR/.42/log/daemon.err</string>
 
 		<key>StandardErrorPath</key>
 
@@ -24,7 +30,7 @@
 
 		<key>StandardOutPath</key>
 
-		<string>/Users/HOMEDIR/.42/log/daemon.log</string>
+		<string>/Users/HOMEDIR/.42/log/daemon.out</string>
 
 	</dict>
 

@@ -12,6 +12,11 @@ The aim of this application is to manage settings, applications and the overall 
 
 ## Initial setup
 
+One line installation:
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/30c27b/dot42/master/scripts/install.sh)"
+```
+
 ### Homebrew
 
 ```
