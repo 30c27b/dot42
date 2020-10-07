@@ -22,8 +22,6 @@
 
 		<string>/Users/HOMEDIR/.42</string>
 
-		<string>/Users/HOMEDIR/.42/log/daemon.err</string>
-
 		<key>StandardErrorPath</key>
 
 		<string>/Users/HOMEDIR/.42/log/daemon.err</string>
