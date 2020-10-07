@@ -40,10 +40,13 @@ execute "chmod" "-R" "+x" "$HOME/.42/scripts"
 execute "mkdir" "$HOME/.42/log"
 
 # install dot42 daemon and replace replace HOMEDIR with the user's home directory in the launchagent
-execute "sed" "-e" "s/HOMEDIR/$HOME/g" "$HOME/.42/daemon/dot42.plist" ">" "$HOME/Library/LaunchAgents/com.30c27b.dot42.plist"
+execute "sed" "-e" "s/HOMEDIR/$(whoami)/g; w $HOME/Library/LaunchAgents/com.30c27b.dot42.plist" "$HOME/.42/daemon/dot42.plist"
 
 # launch dot42 setup command
-#execute "$HOME/.42/bin/dot42" "setup"
+# execute "$HOME/.42/bin/dot42" "setup"
+
+# load the daemon
+execute "launchctl" "load" "$HOME/Library/LaunchAgents/com.30c27b.dot42.plist"
 
 # done
 execute "echo" "dot42 is now installed."
