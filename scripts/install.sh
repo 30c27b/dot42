@@ -43,7 +43,7 @@ execute "mkdir" "$HOME/.42/log"
 execute "sed" "-e" "s/HOMEDIR/$(whoami)/g; w $HOME/Library/LaunchAgents/com.30c27b.dot42.plist" "$HOME/.42/daemon/dot42.plist"
 
 # launch dot42 setup command
-# execute "$HOME/.42/bin/dot42" "setup"
+execute "$HOME/.42/bin/dot42" "setup"
 
 # load the daemon
 execute "launchctl" "load" "$HOME/Library/LaunchAgents/com.30c27b.dot42.plist"
